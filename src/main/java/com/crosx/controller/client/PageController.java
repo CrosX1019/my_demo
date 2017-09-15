@@ -14,11 +14,20 @@ public class PageController extends BaseController {
         return "index";
     }
 
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public ModelAndView pageMain() throws Exception {
-        ModelAndView mav = new ModelAndView("/main");
-        mav.setViewName("/main");
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView pageLogin() throws Exception {
+        ModelAndView mav = new ModelAndView("user/login");
+        mav.setViewName("user/login");
         return mav;
     }
+
+//    @RequestMapping(value = "login.action")
+//    public ModelAndView login(String userName,String password){
+//        if (userName.equals("admin")){
+//            System.out.println("登录成功");
+//
+//        }
+//
+//    }
 
 }

@@ -9,7 +9,15 @@
 <html>
 <head>
     <title>Title</title>
-    <h1>主页面咯</h1>
+    <h1>登录页面</h1>
+    <form action="login.action" method="post">
+        username:<input type="text" name="用户名">
+        <p>
+            password:<input type="text" name="密码">
+        <p>
+            <input type="submit" value="登录">
+    </form>
+
 </head>
 <body>
 
