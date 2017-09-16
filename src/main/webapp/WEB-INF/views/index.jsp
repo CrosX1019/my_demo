@@ -23,7 +23,7 @@
 
 <h3>出现此页面，说明配置成功。</h3>
 
-<a href="/main" type="button" class="btn btn-sm btn-success">跳转去主页</a>
+<a href="/user/login" type="button" class="btn btn-sm btn-success">跳转去主页</a>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

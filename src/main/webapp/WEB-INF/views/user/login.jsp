@@ -8,15 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>用户登录</title>
     <h1>登录页面</h1>
-    <form action="login.action" method="post">
-        username:<input type="text" name="用户名">
+    <form action="/login.action" method="post">
+        手机号:<input type="text" name="userPhone">
         <p>
-            password:<input type="text" name="密码">
+            密码:<input type="text" name="userPwd">
         <p>
             <input type="submit" value="登录">
     </form>
+
+    <a href="/user/register" type="button" class="btn btn-sm btn-success">注册</a>
+
 
 </head>
 <body>
