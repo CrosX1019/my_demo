@@ -32,11 +32,16 @@ public class PageController extends BaseController {
     @RequestMapping(value = "/user/login.action")
     public ModelAndView login(String userPhone, String userPwd) {
         ModelAndView mav = new ModelAndView();
-        if (userPhone.equals("admin") && userPwd.equals("123456")) {
-            System.out.println("登录成功");
-            mav.setViewName("user/login_success");
-        } else {
-            mav.setViewName("user/login_error");
+        List<TUserEntity> userList = userRepository.findAll();
+        for (TUserEntity user : userList) {
+            if (user.getUserPhone().equals(userPhone)) {
+                String pwd = user.getUserPwd();
+                if (pwd.equals(userPwd)) {
+                    mav.setViewName("user/login_success");
+                } else {
+                    mav.setViewName("user/login_error");
+                }
+            }
         }
         return mav;
     }
@@ -49,8 +54,21 @@ public class PageController extends BaseController {
 
     @RequestMapping(value = "/user/register.action", method = RequestMethod.POST)
     public String register(@ModelAttribute("t_user") TUserEntity user) {
-        userRepository.saveAndFlush(user);
-        return "redirect:/user/login";
+        List<TUserEntity> userList = userRepository.findAll();
+        for (TUserEntity userEntity : userList) {
+            if (userEntity.getUserPhone().equals(user.getUserPhone())) {
+                System.out.println("手机号已注册");
+                return "user/register";
+            } else if (userEntity.getNickName().equals(user.getNickName())) {
+                System.out.println("昵称已存在");
+                return "user/register";
+            } else {
+                userRepository.saveAndFlush(user);
+                return "redirect:/user/login";
+            }
+        }
+        return "user/register";
+
     }
 
 }
